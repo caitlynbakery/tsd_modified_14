@@ -82,7 +82,8 @@ class MyApp extends StatelessWidget {
                         },
                         icon: const Icon(Icons.image)),
                     state.images != null
-                        ? ImageWidget(myFile: File(state.images![0].path))
+                        ? ImageWidget(
+                            myFile: File(state.images![state.imageIndex].path))
                         : Container()
                   ],
                 ));
@@ -144,14 +145,14 @@ class PanoramaWidget extends StatelessWidget {
               IconButton(
                   onPressed: () {
                     context.read<ThetaBloc>().add(ChangeImageIndex());
-                    print(state.imageIndex);
+                    print(state.images![state.imageIndex].path);
                   },
                   icon: Icon(Icons.arrow_forward_ios)),
             ],
           ),
           body: Center(
               child: Panorama(
-            child: Image.file(myFile),
+            child: Image.file(File(state.images![state.imageIndex].path)),
           )),
         );
       },

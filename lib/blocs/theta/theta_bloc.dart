@@ -69,8 +69,12 @@ class ThetaBloc extends Bloc<ThetaEvent, ThetaState> {
       emit(state.copyWith(images: event.images));
     });
     on<ChangeImageIndex>((event, emit) async {
-      int incrementImageIndex = state.imageIndex + 1;
-      emit(state.copyWith(imageIndex: incrementImageIndex));
+      if (state.imageIndex < state.images!.length - 1) {
+        int incrementImageIndex = state.imageIndex + 1;
+        emit(state.copyWith(imageIndex: incrementImageIndex));
+      } else {
+        emit(state.copyWith(imageIndex: 0));
+      }
     });
   }
 }
