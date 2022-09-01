@@ -74,12 +74,11 @@ class MyApp extends StatelessWidget {
                     IconButton(
                         iconSize: 60,
                         onPressed: () async {
+                          final thetaBlocContext = context.read<ThetaBloc>();
                           final multiImage =
                               await ImagePicker().pickMultiImage();
                           if (multiImage == null) return;
-                          context
-                              .read<ThetaBloc>()
-                              .add(ImagePickerEvent(multiImage));
+                          thetaBlocContext.add(ImagePickerEvent(multiImage));
                         },
                         icon: const Icon(
                           Icons.image,
@@ -145,7 +144,7 @@ class PanoramaWidget extends StatelessWidget {
         return Scaffold(
           appBar: AppBar(
             leading: IconButton(
-              icon: Icon(Icons.home),
+              icon: const Icon(Icons.home),
               onPressed: () {
                 Navigator.pop(context);
               },
@@ -155,13 +154,12 @@ class PanoramaWidget extends StatelessWidget {
                   onPressed: () {
                     context.read<ThetaBloc>().add(DecrementImageIndex());
                   },
-                  icon: Icon(Icons.arrow_back_ios)),
+                  icon: const Icon(Icons.arrow_back_ios)),
               IconButton(
                   onPressed: () {
                     context.read<ThetaBloc>().add(ChangeImageIndex());
-                    print(state.images![state.imageIndex].path);
                   },
-                  icon: Icon(Icons.arrow_forward_ios)),
+                  icon: const Icon(Icons.arrow_forward_ios)),
             ],
           ),
           body: Center(
