@@ -72,6 +72,7 @@ class MyApp extends StatelessWidget {
                               )
                             : Container(),
                     IconButton(
+                        iconSize: 60,
                         onPressed: () async {
                           final multiImage =
                               await ImagePicker().pickMultiImage();
@@ -80,7 +81,9 @@ class MyApp extends StatelessWidget {
                               .read<ThetaBloc>()
                               .add(ImagePickerEvent(multiImage));
                         },
-                        icon: const Icon(Icons.image)),
+                        icon: const Icon(
+                          Icons.image,
+                        )),
                     state.images != null
                         ? ImageWidget(
                             myFile: File(state.images![state.imageIndex].path))
@@ -141,7 +144,18 @@ class PanoramaWidget extends StatelessWidget {
       builder: (context, state) {
         return Scaffold(
           appBar: AppBar(
+            leading: IconButton(
+              icon: Icon(Icons.home),
+              onPressed: () {
+                Navigator.pop(context);
+              },
+            ),
             actions: [
+              IconButton(
+                  onPressed: () {
+                    context.read<ThetaBloc>().add(DecrementImageIndex());
+                  },
+                  icon: Icon(Icons.arrow_back_ios)),
               IconButton(
                   onPressed: () {
                     context.read<ThetaBloc>().add(ChangeImageIndex());

@@ -22,3 +22,5 @@ class ImagePickerEvent extends ThetaEvent {
 }
 
 class ChangeImageIndex extends ThetaEvent {}
+
+class DecrementImageIndex extends ThetaEvent {}

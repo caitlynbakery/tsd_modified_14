@@ -1,6 +1,12 @@
 # 14. Modified Take Save Display 
 
-This is a modification of Take Save Display for the challenge. It is a demonstration of using the RICOH THETA X camera with Android and IOS phones.
+![multi](docs/tsd_modified.gif)
+
+This is a modification of Take Save Display for the challenge. It is a demonstration of using the RICOH THETA X camera with Android and IOS phones. 
+
+## Overview of Modification
+
+The project uses a `MultiImagePicker` to pick multiple images and iterate through the list in panorama view. There are additional buttons on the panorama view screen to navigate through the images and return home.
 
 ## Features
 
